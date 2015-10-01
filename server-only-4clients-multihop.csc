@@ -48,9 +48,9 @@
       se.sics.cooja.mspmote.SkyMoteType
       <identifier>server</identifier>
       <description>Erbium Server</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/er-rest-example/er-example-server.c</source>
+      <source EXPORT="discard">./er-example-server.c</source>
       <commands EXPORT="discard">make er-example-server.sky TARGET=sky</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/er-rest-example/er-example-server.sky</firmware>
+      <firmware EXPORT="copy">./er-example-server.sky</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>
