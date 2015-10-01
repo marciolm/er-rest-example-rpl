@@ -58,71 +58,6 @@ Open new terminal
 - Choose "Click button on Sky 3" from the context menu of mote 3 (client) and
   watch serial output
 
-TMOTES HOWTO
-------------
-
-###Server:
-
-1. Connect two Tmote Skys (check with $ make TARGET=sky sky-motelist)
-
-        make TARGET=sky er-example-server.upload MOTE=2
-        make TARGET=sky login MOTE=2
-
-2. Press reset button, get address, abort with Ctrl+C:
-   Line: "Tentative link-local IPv6 address fe80:0000:0000:0000:____:____:____:____"
-
-        cd ../ipv6/rpl-border-router/
-        make TARGET=sky border-router.upload MOTE=1
-        make connect-router
-
-    For a BR tty other than USB0:
-
-        make connect-router-port PORT=X
-
-3. Start Copper and discover resources at:
-
-        coap://[aaaa::____:____:____:____]:5683/
-
-### Add a client:
-
-1. Change the hard-coded server address in er-example-client.c to aaaa::____:____:____:____
-2. Connect a third Tmote Sky
-
-        make TARGET=sky er-example-client.upload MOTE=3
-
-MINIMAL-NET HOWTO
------------------
-
-With the target minimal-net you can test your CoAP applications without
-constraints, i.e., with large buffers, debug output, memory protection, etc.
-The er-plugtest-server is thought for the minimal-net platform, as it requires
-an 1280-byte IP buffer and 1024-byte blocks.
-
-        make TARGET=minimal-net er-plugtest-server
-        sudo ./er-plugtest-server.minimal-net
-
-Open new terminal
-
-        make connect-minimal
-
-- Start Copper and discover resources at coap://[fdfd::ff:fe00:10]:5683/
-- You can enable the ETSI Plugtest menu in Copper's preferences
-
-Under Windows/Cygwin, WPCAP might need a patch in
-<cygwin>\usr\include\w32api\in6addr.h:
-
-    21,23c21
-    < #ifdef __INSIDE_CYGWIN__
-    <     uint32_t __s6_addr32[4];
-    < #endif
-    ---
-    >     u_int __s6_addr32[4];
-    36d33
-    < #ifdef __INSIDE_CYGWIN__
-    39d35
-    < #endif
-
-DETAILS
 -------
 
 Erbium currently implements draft 13.  Central features are commented in
@@ -146,13 +81,6 @@ Erbium (Er) REST Engine.
 
 - WITH_COAP=13 uses Erbium CoAP 13 apps/er-coap-13/.  The default port for
   coap-13 is 5683.
-- WITH_COAP=12 uses Erbium CoAP 12 apps/er-coap-12/.  The default port for
-  coap-12 is 5683.
-- WITH_COAP=7 uses Erbium CoAP 08 apps/er-coap-07/.  The default port for
-  coap-07/-08 is 5683.
-- WITH_COAP=3 uses Erbium CoAP 03 apps/er-coap-03/.  The default port for
-  coap-03 is 61616.  er-coap-03 produces some warnings, as it not fully
-  maintained anymore.
 - WITH_COAP=0 is a stub to link an Erbium HTTP engine that uses the same
   resource abstraction (REST.x() functions and RESOURCE macros.
 
