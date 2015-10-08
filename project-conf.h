@@ -38,7 +38,7 @@
 /* Disabling RDC for demo purposes. Core updates often require more memory. */
 /* For projects, optimize memory and enable RDC again. */
 #undef NETSTACK_CONF_RDC
-#define NETSTACK_CONF_RDC      nullrdc_driver
+#define NETSTACK_CONF_RDC         nullrdc_driver
 
 /* Increase rpl-border-router IP-buffer when using more than 64. */
 #undef REST_MAX_CHUNK_SIZE
@@ -63,7 +63,7 @@
 /* Must be <= open transaction number, default is COAP_MAX_OPEN_TRANSACTIONS-1. */
 /*
 #undef COAP_MAX_OBSERVERS
-#define COAP_MAX_OBSERVERS      2
+#define COAP_MAX_OBSERVERS     2 
 */
 
 /* Filtering .well-known/core per query can be disabled to save space. */

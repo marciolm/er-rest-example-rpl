@@ -1,1 +1,1 @@
-make TARGET=cooja server-client-alterado-rplinfo.csc
+make TARGET=cooja server-only-4clients-multihop.csc
