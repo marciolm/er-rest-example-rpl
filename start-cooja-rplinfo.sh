@@ -1,1 +1,1 @@
-make TARGET=cooja server-client-alterado.csc
+make TARGET=cooja 1dag_10rplinfo-lossy.csc
