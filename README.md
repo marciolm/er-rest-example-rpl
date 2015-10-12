@@ -2,9 +2,6 @@
 Cooja Test-Bed for Retrieving RPL Routing Information using COAP
 ================================================================
 
-EXAMPLE FILES
--------------
-
 This test-bed project is a fork from Erbium COAP Server [1], RPLINFO [2] 6LBR [3] and libcoap [4]
 
 To install this test-bed: 
@@ -35,9 +32,9 @@ To install this test-bed:
     cd ~/6lbr/examples/er-rest-example-rpl
     ./coap-read-4.sh
 
-[1] https://github.com/contiki-os/contiki/tree/master/examples/er-rest-example
-[2] https://github.com/malvira/rplinfo
-[3] https://github.com/cetic/6lbr/wiki
-[4] http://sourceforge.net/projects/libcoap
+ - [1] https://github.com/contiki-os/contiki/tree/master/examples/er-rest-example
+ - [2] https://github.com/malvira/rplinfo
+ - [3] https://github.com/cetic/6lbr/wiki
+ - [4] http://sourceforge.net/projects/libcoap
 
 
