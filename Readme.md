@@ -6,7 +6,7 @@ This test-bed project is a fork from Erbium COAP Server [1], RPLINFO [2] 6LBR [3
 
 To install this test-bed: 
 -------------------------
-- Install the CETIC Contiki tree folowing the instructions on [https://github.com/cetic/6lbr/wiki/COOJA-Interface](https://github.com/cetic/6lbr/wiki/COOJA-Interface) 
+- Install the CETIC Contiki tree following the instructions on [https://github.com/cetic/6lbr/wiki/COOJA-Interface](https://github.com/cetic/6lbr/wiki/COOJA-Interface) 
 
 Install libcoap:
 

@@ -6,7 +6,7 @@ This test-bed project is a fork from Erbium COAP Server [1], RPLINFO [2] 6LBR [3
 
 To install this test-bed: 
 -------------------------
-- Install the CETIC Contiki tree folooing the instructions on [https://github.com/cetic/6lbr/wiki/COOJA-Interface](https://github.com/cetic/6lbr/wiki/COOJA-Interface) 
+- Install the CETIC Contiki tree following the instructions on [https://github.com/cetic/6lbr/wiki/COOJA-Interface](https://github.com/cetic/6lbr/wiki/COOJA-Interface) 
 
 Install libcoap:
 
@@ -44,7 +44,3 @@ There are some scrips to retrive the routing information via COAP. To run them, 
 * [3] https://github.com/cetic/6lbr/wiki
 * [4] http://sourceforge.net/projects/libcoap
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 565c1811b423aa5c2a13676ee28a4912f3ab4f73
