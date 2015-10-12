@@ -44,3 +44,7 @@ There are some scrips to retrive the routing information via COAP. To run them, 
 * [3] https://github.com/cetic/6lbr/wiki
 * [4] http://sourceforge.net/projects/libcoap
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 565c1811b423aa5c2a13676ee28a4912f3ab4f73
