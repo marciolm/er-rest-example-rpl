@@ -1,4 +1,4 @@
-num_motes=9
+num_motes=8
 for ((i=2;i<=$num_motes;i++)); do 
    echo "================================================================"
    num_parents=`~/libcoap-4.1.1/examples/coap-client -B 5 -m get coap://[aaaa::200:0:0:$i]:5683/rplinfo/parents | tail -1`
