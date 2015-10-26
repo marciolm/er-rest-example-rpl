@@ -1,6 +1,6 @@
 
-Cooja Test-Bed for Retrieving RPL Routing Information using COAP
-================================================================
+Cooja Test-Bed for Retrieving RPL Routing Information using COAP under Contiki
+==============================================================================
 
 This test-bed project is a fork from Erbium COAP Server [1], RPLINFO [2]  and libcoap [3]
 
