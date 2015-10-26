@@ -34,12 +34,11 @@ Open a second terminal:
 	$ cd ~/contiki/examples/er-rest-example-rpl
 	$ ./inicia-router.sh
 
-There are some scrips to retrive the routing information via COAP. To run them, start a third terminal:
+There are some scripts to retrive the routing information via COAP. To run them, start a third terminal:
 
 	$ cd ~/contiki/examples/er-rest-example-rpl
 	$ ./coap-read-4.sh
 
 * [1] https://github.com/contiki-os/contiki/tree/master/examples/er-rest-example
 * [2] https://github.com/malvira/rplinfo
-* [3] https://github.com/cetic/6lbr/wiki
-* [4] http://sourceforge.net/projects/libcoap
+* [3] http://sourceforge.net/projects/libcoap
