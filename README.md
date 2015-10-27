@@ -9,7 +9,7 @@ To install this test-bed:
 - Install the Contiki 3.x tree following the instructions on [https://github.com/contiki-os/contiki](https://github.com/contiki-os/contiki) 
 
 	$ cd ~/
-	$ git clone https://github.com/contiki-os/contiki
+	$ git clone https://github.com/contiki-os/contiki.git
 
 - Install libcoap:
 
@@ -24,6 +24,13 @@ To install this test-bed:
 
 	$ cd ~/contiki/examples
 	$ git clone -b contiki3.x https://github.com/marciolm/er-rest-example-rpl.git 
+
+- Rename the file ~/.cooja.user.properties to a backup
+
+- Compile the Cooja [4]
+
+	$ cd ~/contiki/tools/cooja
+	$ ant jar
 
 - Open a terminal and run Cooja simulation:
 
@@ -45,3 +52,4 @@ There are some scripts to retrive the routing information via COAP. To run them,
 * [1] https://github.com/contiki-os/contiki/tree/master/examples/er-rest-example
 * [2] https://github.com/malvira/rplinfo
 * [3] http://sourceforge.net/projects/libcoap
+* [4] https://github.com/contiki-os/contiki/wiki/An-Introduction-to-Cooja
