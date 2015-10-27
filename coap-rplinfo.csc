@@ -10,6 +10,7 @@
   <project EXPORT="discard">[APPS_DIR]/radiologger-headless</project>
   <simulation>
     <title>coap-rplinfo</title>
+    <speedlimit>1.0</speedlimit>
     <randomseed>123456</randomseed>
     <motedelay_us>1000000</motedelay_us>
     <radiomedium>
@@ -26,9 +27,9 @@
       org.contikios.cooja.mspmote.Exp5438MoteType
       <identifier>exp5438#1</identifier>
       <description>Exp5438 COAP-server</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/er-rest-example-rpl-3/er-example-server.c</source>
+      <source EXPORT="discard">[CONTIKI_DIR]/examples/er-rest-example-rpl/er-example-server.c</source>
       <commands EXPORT="discard">make er-example-server.exp5438 TARGET=exp5438</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/er-rest-example-rpl-3/er-example-server.exp5438</firmware>
+      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/er-rest-example-rpl/er-example-server.exp5438</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.IPAddress</moteinterface>
@@ -176,7 +177,7 @@
   <plugin>
     org.contikios.cooja.plugins.SimControl
     <width>280</width>
-    <z>2</z>
+    <z>0</z>
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
@@ -207,7 +208,7 @@
       <coloring />
     </plugin_config>
     <width>638</width>
-    <z>3</z>
+    <z>2</z>
     <height>240</height>
     <location_x>400</location_x>
     <location_y>160</location_y>
@@ -219,7 +220,7 @@
       <decorations>true</decorations>
     </plugin_config>
     <width>358</width>
-    <z>5</z>
+    <z>3</z>
     <height>160</height>
     <location_x>680</location_x>
     <location_y>0</location_y>
