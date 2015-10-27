@@ -34,10 +34,10 @@ Compile the Cooja [4]
 
 Open a terminal and run Cooja simulation:
 
-	$ cd er-rest-example-rpl
+	$ cd ~/contiki/examples/er-rest-example-rpl
 	$ ./inicia-cooja.sh 
 
-* To connect your Linux host machine in the simulated WSN, you have to start theSlip connection to 6LBR, start the bridge br0 and enable the IPv6 routing using the inicia-router.sh script.
+* To connect your Linux host machine in the simulated WSN, you have to start the Slip connection to 6LBR, start the bridge br0 and enable the IPv6 routing using the inicia-router.sh script.
 
 Open a second terminal:
 
