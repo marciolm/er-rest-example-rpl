@@ -8,7 +8,10 @@ To install this test-bed:
 -------------------------
 - Install the Contiki 3.x tree following the instructions on [https://github.com/contiki-os/contiki](https://github.com/contiki-os/contiki) 
 
-Install libcoap:
+	$ cd ~/
+	$ git clone https://github.com/contiki-os/contiki
+
+- Install libcoap:
 
 	$ cd ~/
 	$ wget http://downloads.sourceforge.net/project/libcoap/coap-18/libcoap-4.1.1.tar.gz 
@@ -17,17 +20,17 @@ Install libcoap:
 	$ ./configure
 	$ make
 
-Clone this repository:
+- Clone this repository:
 
 	$ cd ~/contiki/examples
 	$ git clone -b contiki3.x https://github.com/marciolm/er-rest-example-rpl.git 
 
-Open a terminal and run Cooja simulation:
+- Open a terminal and run Cooja simulation:
 
 	$ cd er-rest-example-rpl
 	$ ./inicia-cooja.sh 
 
-* To connect your Linux host machine in the simulated WSN, you have to start the 6LBR, start the bridge br0 and enable the IPv6 routing.
+* To connect your Linux host machine in the simulated WSN, you have to start theSlip connection to 6LBR, start the bridge br0 and enable the IPv6 routing using the inicia-router.sh script.
 
 Open a second terminal:
 
