@@ -6,12 +6,12 @@ This test-bed project is a fork from Erbium COAP Server [1], RPLINFO [2]  and li
 
 To install this test-bed: 
 -------------------------
-- Install the Contiki 3.x tree following the instructions on [https://github.com/contiki-os/contiki](https://github.com/contiki-os/contiki) 
+Install the Contiki 3.x tree following the instructions on [https://github.com/contiki-os/contiki](https://github.com/contiki-os/contiki) 
 
 	$ cd ~/
 	$ git clone https://github.com/contiki-os/contiki.git
 
-- Install libcoap:
+Install libcoap:
 
 	$ cd ~/
 	$ wget http://downloads.sourceforge.net/project/libcoap/coap-18/libcoap-4.1.1.tar.gz 
@@ -20,19 +20,19 @@ To install this test-bed:
 	$ ./configure
 	$ make
 
-- Clone this repository:
+Clone this repository:
 
 	$ cd ~/contiki/examples
 	$ git clone -b contiki3.x https://github.com/marciolm/er-rest-example-rpl.git 
 
-- Rename the file ~/.cooja.user.properties to a backup
+Rename the file ~/.cooja.user.properties to a backup
 
-- Compile the Cooja [4]
+Compile the Cooja [4]
 
 	$ cd ~/contiki/tools/cooja
 	$ ant jar
 
-- Open a terminal and run Cooja simulation:
+Open a terminal and run Cooja simulation:
 
 	$ cd er-rest-example-rpl
 	$ ./inicia-cooja.sh 
@@ -53,3 +53,4 @@ There are some scripts to retrive the routing information via COAP. To run them,
 * [2] https://github.com/malvira/rplinfo
 * [3] http://sourceforge.net/projects/libcoap
 * [4] https://github.com/contiki-os/contiki/wiki/An-Introduction-to-Cooja
+
