@@ -7,6 +7,7 @@
 #include "net/ip/uip.h"
 #include "net/ipv6/uip-ds6.h"
 #include "net/rpl/rpl.h"
+#include "net/rpl/rpl-private.h"
 
 #include "rest-engine.h"
 #include "er-coap-engine.h"
@@ -104,11 +105,12 @@ routes_handler(void* request, void* response, uint8_t *buffer, uint16_t preferre
 
 /*  {"eui":"00050c2a8c9d4ea0","pref":"true","etx":124}*/
 /* length of an neighbor entry, must be fixed width */
-uint16_t create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred)
+uint16_t create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred, rpl_rank_t rank)
 {
 	uint8_t n = 0;
-	uip_ds6_nbr_t *nbr = rpl_get_nbr(parent);
+	//uip_ds6_nbr_t *nbrb = rpl_get_nbr(parent);
 	uip_ipaddr_t * addr = rpl_get_parent_ipaddr(parent);
+	//rpl_rank_t * testeee = rpl_get_parent_rank(uip_lladdr addr);
 
 	n += sprintf(&(buf[n]), "{\"eui\":\"%04x%04x%04x%04x\",",
 		     UIP_HTONS(addr->u16[4]),
@@ -121,7 +123,10 @@ uint16_t create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred)
 	} else {
 		n += sprintf(&(buf[n]), "false,");
 	}
-	n += sprintf(&(buf[n]), "\"etx\":%d}", nbr->link_metric);
+	//n += sprintf(&(buf[n]), "\"etx\":%d}", nbr->link_metric);
+	//n += sprintf(&(buf[n]), "\"testeee\":%d}", (int)testeee);
+	//n += sprintf(&(buf[n]), "\"rank\":%d}", rank);
+	n += sprintf(&(buf[n]), "etx:%d rank %d", rank/RPL_DAG_MC_ETX_DIVISOR, rank);
 	buf[n] = 0;
 	PRINTF("buf_parents: %s\n", buf);
 	return n;
@@ -150,7 +155,12 @@ parents_handler(void* request, void* response, uint8_t *buffer, uint16_t preferr
   const char *pstr;
   uint8_t count;
 
+  //uip_ipaddr_t *endereco = rpl_get_parent_ipaddr(parent);
+  //rpl_rank_t *ranque = rpl_get_parent_rank(*endereco);
+
+
   dag = rpl_get_any_dag();
+
 
        if(dag != NULL) {
 
@@ -173,9 +183,9 @@ parents_handler(void* request, void* response, uint8_t *buffer, uint16_t preferr
                                     parent = nbr_table_next(rpl_parents, parent);
                                 }
   				if (parent == dag->preferred_parent) {
-					strpos = create_parent_msg((char *)buffer, parent, 1);
+					strpos = create_parent_msg((char *)buffer, parent, 1, dag->rank);
 				} else {
-					strpos = create_parent_msg((char *)buffer, parent, 0);
+					strpos = create_parent_msg((char *)buffer, parent, 0, dag->rank);
 			        }
 			}
 
@@ -194,8 +204,47 @@ parents_handler(void* request, void* response, uint8_t *buffer, uint16_t preferr
 
 }
 
+
+
+//---------------------------------------------------------------------------------------------------
+
+
+static void get_variavel_handler(void *request, void *response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+static void put_variavel_handler(void *request, void *response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset);
+RESOURCE(variavel,
+         "title=\"Grava\";rt=\"Text\"",
+		 get_variavel_handler,			//get
+		 NULL,							//post
+		 put_variavel_handler,			//put
+         NULL);							//delete
+int variavelA = 3;
+static void
+get_variavel_handler(void *request, void *response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+	  REST.set_response_payload(response, buffer, snprintf((char *)
+			  buffer, preferred_size, "VariavelA %d", variavelA));
+}
+put_variavel_handler(void *request, void *response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
+{
+	  uint8_t index;
+	  const char *valor;
+
+	  REST.get_query_variable(request, "index", &valor);
+	  index = (uint8_t)atoi(valor);
+
+	  variavelA = index;
+	  REST.set_response_status(response, REST.status.CHANGED);
+}
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------
+
 void
 rplinfo_activate_resources(void) {
   rest_activate_resource(&parents, "rplinfo/parents");
   rest_activate_resource(&routes, "rplinfo/routes");
+  rest_activate_resource(&variavel, "rplinfo/grava");
 }
