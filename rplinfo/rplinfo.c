@@ -110,7 +110,7 @@ routes_handler(void* request, void* response, uint8_t *buffer,
     { /* index not provided */
       strpos += snprintf((char *) buffer, preferred_size, "%d", count);
     }
-  *offset = -1;  // try to fix Firefox
+  *offset = -1;  // try to fix Copper response
   REST.set_response_payload(response, (char *) buffer, strpos);
 }
 
@@ -220,7 +220,7 @@ parents_handler(void* request, void* response, uint8_t *buffer,
           "{\"err\": \"no DAG\"}");
       REST.set_header_content_type(response, APPLICATION_JSON);
     }
-  *offset = -1;  // try to fix Firefox
+  *offset = -1;  // try to fix Copper response
   REST.set_response_payload(response, buffer, strpos);
 }
 
