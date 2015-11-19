@@ -110,7 +110,7 @@ routes_handler(void* request, void* response, uint8_t *buffer,
     { /* index not provided */
       strpos += snprintf((char *) buffer, preferred_size, "%d", count);
     }
-
+  *offset = -1;  // try to fix Firefox
   REST.set_response_payload(response, (char *) buffer, strpos);
 }
 
@@ -121,6 +121,7 @@ create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred,
     rpl_rank_t rank)
 {
   uint8_t n = 0;
+  uip_ds6_nbr_t *nbr = rpl_get_nbr(parent);
   uip_ipaddr_t * addr = rpl_get_parent_ipaddr(parent);
   n += sprintf(&(buf[n]), "{\"eui\":\"%04x%04x%04x%04x\",",
       UIP_HTONS(addr->u16[4]), UIP_HTONS(addr->u16[5]), UIP_HTONS(addr->u16[6]),
@@ -134,7 +135,7 @@ create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred,
     {
       n += sprintf(&(buf[n]),"\"false\",");
     }
-  n += sprintf(&(buf[n]),"\"etx\":\"%d\",\"rank\":\"%d\"}", rank / RPL_DAG_MC_ETX_DIVISOR,
+  n += sprintf(&(buf[n]),"\"etx\":\"%d\",\"rank\":\"%d\"}", nbr->link_metric/RPL_DAG_MC_ETX_DIVISOR ,
       rank);
   buf[n] = 0;
   PRINTF("buf_parents: %s\n", buf);
@@ -219,9 +220,10 @@ parents_handler(void* request, void* response, uint8_t *buffer,
           "{\"err\": \"no DAG\"}");
       REST.set_header_content_type(response, APPLICATION_JSON);
     }
-
+  *offset = -1;  // try to fix Firefox
   REST.set_response_payload(response, buffer, strpos);
 }
+
 
 //---------------------------------------------------------------------------------------------------
 
@@ -241,6 +243,7 @@ static void
 get_variavel_handler(void *request, void *response, uint8_t *buffer,
     uint16_t preferred_size, int32_t *offset)
 {
+
   REST.set_response_payload(response, buffer,
       snprintf((char *) buffer, preferred_size, "VariavelA %d", variavelA));
 }
