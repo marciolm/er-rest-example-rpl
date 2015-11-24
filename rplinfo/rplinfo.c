@@ -123,10 +123,9 @@ create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred,
   uint8_t n = 0;
   uip_ds6_nbr_t *nbr = rpl_get_nbr(parent);
   uip_ipaddr_t * addr = rpl_get_parent_ipaddr(parent);
-  n += sprintf(&(buf[n]), "{\"eui\":\"%04x%04x%04x%04x\",",
-      UIP_HTONS(addr->u16[4]), UIP_HTONS(addr->u16[5]), UIP_HTONS(addr->u16[6]),
-      UIP_HTONS(addr->u16[7]));
-  n += sprintf(&(buf[n]), "\"p\":");
+  n += sprintf(&(buf[n]), "{\"addr\":\"");
+  n += ipaddr_add(addr, &(buf[n]));
+  n += sprintf(&(buf[n]), ",\"p\":");
   if (preferred)
     {
       n += sprintf(&(buf[n]),"\"true\",");
