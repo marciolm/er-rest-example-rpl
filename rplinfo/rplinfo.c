@@ -195,12 +195,12 @@ parents_handler(void* request, void* response, uint8_t *buffer,
               if (parent == dag->preferred_parent)
                 {
                   strpos = create_parent_msg((char *) buffer, parent, 1,
-                      dag->rank);
+                      parent->rank);
                 }
               else
                 {
                   strpos = create_parent_msg((char *) buffer, parent, 0,
-                      dag->rank);
+                      parent->rank);
                 }
             }
 
