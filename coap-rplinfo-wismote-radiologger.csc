@@ -235,5 +235,13 @@
     <location_x>59</location_x>
     <location_y>335</location_y>
   </plugin>
+  <plugin>
+      be.cetic.cooja.plugins.RadioLoggerHeadless
+      <width>150</width>
+      <z>0</z>
+      <height>300</height>
+      <location_x>1</location_x>
+      <location_y>403</location_y>
+    </plugin>
 </simconf>
 
