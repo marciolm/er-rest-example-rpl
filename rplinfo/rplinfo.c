@@ -144,8 +144,11 @@ create_parent_msg(char *buf, rpl_parent_t *parent, uint8_t preferred,
 static void
 parents_handler(void *request, void *response, uint8_t *buffer,
     uint16_t preferred_size, int32_t *offset);
-RESOURCE(parents, "title=\"RPL parent info\";rt=\"Data\"", parents_handler,
-    parents_handler, NULL, NULL);
+RESOURCE(parents, "title=\"RPL parent info\";rt=\"Data\"",
+    parents_handler,
+    parents_handler,
+    NULL,
+    NULL);
 
 static volatile uint8_t cur_neigh_entry;
 static volatile uint8_t entry_char_skip;
@@ -167,7 +170,6 @@ parents_handler(void* request, void* response, uint8_t *buffer,
 
   if (dag != NULL)
     {
-
       /* count the number of parents and return the total */
       count = uip_ds6_nbr_num(); // get number of parents
       rpl_print_neighbor_list(); // get parents for debug purposes
@@ -227,35 +229,35 @@ parents_handler(void* request, void* response, uint8_t *buffer,
 //---------------------------------------------------------------------------------------------------
 
 static void
-get_variavel_handler(void *request, void *response, uint8_t *buffer,
+get_rank_handler(void *request, void *response, uint8_t *buffer,
     uint16_t preferred_size, int32_t *offset);
 static void
-put_variavel_handler(void *request, void *response, uint8_t *buffer,
+put_rank_handler(void *request, void *response, uint8_t *buffer,
     uint16_t preferred_size, int32_t *offset);
-RESOURCE(variavel, "title=\"Grava\";rt=\"Text\"", get_variavel_handler, //get
+
+RESOURCE(node_rank, "title=\"rank\";rt=\"Text\"", get_rank_handler, //get
     NULL,//post
-    put_variavel_handler,//put
-    NULL);
-//delete
-int variavelA = 3;
+    put_rank_handler,//put
+    NULL); //delete
+rpl_dag_t *dag;
 static void
-get_variavel_handler(void *request, void *response, uint8_t *buffer,
+get_rank_handler(void *request, void *response, uint8_t *buffer,
     uint16_t preferred_size, int32_t *offset)
 {
-
+  dag = rpl_get_any_dag();
   REST.set_response_payload(response, buffer,
-      snprintf((char *) buffer, preferred_size, "VariavelA %d", variavelA));
+      snprintf((char *) buffer, preferred_size, "%u", dag->rank));
 }
-put_variavel_handler(void *request, void *response, uint8_t *buffer,
+put_rank_handler(void *request, void *response, uint16_t *buffer,
     uint16_t preferred_size, int32_t *offset)
 {
-  uint8_t index;
-  const char *valor;
+  uint16_t index;
+  const char *new_rank;
 
-  REST.get_query_variable(request, "index", &valor);
-  index = (uint8_t) atoi(valor);
+  REST.get_query_variable(request, "index", &new_rank);
+  index = (uint16_t) atoi(new_rank);
 
-  variavelA = index;
+  dag->rank = index;
   REST.set_response_status(response, REST.status.CHANGED);
 }
 
@@ -266,6 +268,6 @@ rplinfo_activate_resources(void)
 {
   rest_activate_resource(&parents, "rplinfo/parents");
   rest_activate_resource(&routes, "rplinfo/routes");
-  rest_activate_resource(&variavel, "rplinfo/grava");
+  rest_activate_resource(&node_rank, "rplinfo/rank");
 }
 
