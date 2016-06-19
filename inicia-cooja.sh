@@ -1,1 +1,1 @@
-make TARGET=cooja coap-rplinfo-wismote.csc
+make TARGET=cooja coap-rplinfo-somente-wismote-radiologger.csc
